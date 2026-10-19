@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#26372e">
+    <title>Contact Us | Yogaverse</title>
+    <style>
+        :root {
+            color-scheme: light;
+            font-family: "Segoe UI", Arial, sans-serif;
+            color: #26372e;
+            background: #f6f7f0;
+            font-synthesis: none;
+            text-rendering: optimizeLegibility;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            background: #f6f7f0;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .site-header {
+            width: 100%;
+            padding: 1rem max(1.25rem, calc((100% - 1200px) / 2));
+            background: #26372e;
+            box-shadow: 0 2px 18px rgb(38 55 46 / 14%);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .brand {
+            color: #f6f7f0;
+            font-size: 1.4rem;
+            font-weight: 750;
+            letter-spacing: 0.02em;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .brand span {
+            color: #d8b184;
+        }
+
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            gap: 0.25rem;
+        }
+
+        nav a {
+            padding: 0.65rem 0.85rem;
+            border-radius: 999px;
+            color: #e3e8e1;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: background-color 160ms ease, color 160ms ease;
+        }
+
+        nav a:hover,
+        nav a:focus-visible,
+        nav a[aria-current="page"] {
+            color: #fff;
+            background: #3a4d42;
+        }
+
+        nav a:focus-visible,
+        .email-link:focus-visible,
+        button:focus-visible,
+        input:focus-visible,
+        select:focus-visible,
+        textarea:focus-visible {
+            outline: 3px solid #c38b57;
+            outline-offset: 3px;
+        }
+
+        main {
+            width: min(1100px, calc(100% - 3rem));
+            margin: 0 auto;
+        }
+
+        .intro {
+            padding: clamp(2.5rem, 7vw, 4.5rem) 0 2rem;
+            text-align: center;
+        }
+
+        .eyebrow {
+            margin: 0 0 0.75rem;
+            color: #6b815f;
+            font-size: 0.8rem;
+            font-weight: 750;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            margin: 0;
+            color: #294934;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(2.4rem, 5vw, 4rem);
+            font-weight: 500;
+        }
+
+        .intro-copy {
+            max-width: 660px;
+            margin: 1rem auto 0;
+            color: #536359;
+            font-size: 1.05rem;
+            line-height: 1.75;
+        }
+
+        .contact-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+            align-items: start;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-info,
+        .contact-form {
+            padding: clamp(1.4rem, 4vw, 2.2rem);
+            border: 1px solid #e2e8de;
+            border-radius: 1.25rem;
+            background: #fff;
+            box-shadow: 0 10px 30px rgb(38 55 46 / 5%);
+        }
+
+        .contact-info h2,
+        .contact-form h2 {
+            margin: 0 0 0.75rem;
+            color: #315d46;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 1.7rem;
+            font-weight: 500;
+        }
+
+        .contact-info > p,
+        .form-intro {
+            margin: 0 0 1.5rem;
+            color: #536359;
+            font-size: 0.98rem;
+            line-height: 1.7;
+        }
+
+        .contact-method {
+            padding: 1.1rem;
+            border-radius: 0.9rem;
+            background: #f3f6f0;
+        }
+
+        .contact-method h3 {
+            margin: 0 0 0.45rem;
+            color: #294934;
+            font-size: 1rem;
+        }
+
+        .email-link {
+            color: #315d46;
+            font-weight: 700;
+            overflow-wrap: anywhere;
+            text-underline-offset: 0.2em;
+        }
+
+        .contact-method p {
+            margin: 0.5rem 0 0;
+            color: #68786c;
+            font-size: 0.88rem;
+            line-height: 1.6;
+        }
+
+        .explore-links {
+            margin-top: 1.5rem;
+        }
+
+        .explore-links h3 {
+            margin: 0 0 0.7rem;
+            color: #294934;
+            font-size: 1rem;
+        }
+
+        .quick-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.55rem;
+        }
+
+        .quick-links a {
+            display: inline-flex;
+            min-height: 38px;
+            align-items: center;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e2e8de;
+            border-radius: 999px;
+            color: #48604d;
+            background: #fff;
+            font-size: 0.86rem;
+            text-decoration: none;
+        }
+
+        .quick-links a:hover {
+            background: #edf2eb;
+        }
+
+        .contact-form {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .contact-form h2 {
+            margin-bottom: 0;
+        }
+
+        .form-intro {
+            margin: 0;
+        }
+
+        .field {
+            display: grid;
+            gap: 0.4rem;
+        }
+
+        label {
+            color: #34483a;
+            font-size: 0.9rem;
+            font-weight: 650;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            min-height: 46px;
+            padding: 0.75rem 0.85rem;
+            border: 1px solid #d8e0d6;
+            border-radius: 0.7rem;
+            color: #26372e;
+            background: #fff;
+            font: inherit;
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: #89958b;
+        }
+
+        textarea {
+            min-height: 140px;
+            resize: vertical;
+        }
+
+        .submit-button {
+            display: inline-flex;
+            min-height: 48px;
+            align-items: center;
+            justify-content: center;
+            padding: 0.8rem 1.3rem;
+            border: 0;
+            border-radius: 999px;
+            color: #fff;
+            background: #315d46;
+            font: inherit;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 160ms ease, transform 160ms ease;
+        }
+
+        .submit-button:hover {
+            background: #244b36;
+            transform: translateY(-1px);
+        }
+
+        .form-note {
+            margin: 0;
+            color: #718075;
+            font-size: 0.82rem;
+            line-height: 1.6;
+        }
+
+        .site-footer {
+            padding: 1.5rem;
+            color: #eaf1e9;
+            background: #263f32;
+            text-align: center;
+        }
+
+        .site-footer p {
+            margin: 0;
+        }
+
+        @media (max-width: 800px) {
+            .header-inner {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            nav {
+                justify-content: center;
+            }
+
+            .contact-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .site-header {
+                padding: 1rem 0.75rem;
+            }
+
+            nav {
+                gap: 0;
+            }
+
+            nav a {
+                padding: 0.55rem 0.65rem;
+                font-size: 0.88rem;
+            }
+
+            main {
+                width: calc(100% - 1.5rem);
+            }
+
+            .intro {
+                padding-top: 2.5rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+        <link rel="stylesheet" href="nature.css">
+        <script src="nature.js" defer></script>
+    </head>
+<body>
+    <header class="site-header">
+        <div class="header-inner">
+            <a class="brand" href="second.html" aria-label="Yogaverse home">yoga<span>verse</span></a>
+            <nav aria-label="Main navigation">
+                <a href="second.html">Home</a>
+                <a href="about.html">About Yoga</a>
+                <a href="poses.html">Yoga Poses</a>
+                <a href="videos.html">Yoga Videos</a>
+                <a href="contact.html" aria-current="page">Contact Us</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="intro" aria-labelledby="page-heading">
+            <p class="eyebrow">We would love to hear from you</p>
+            <h1 id="page-heading">Get in touch</h1>
+            <p class="intro-copy">
+                Have a question about yoga, a suggestion for Yogaverse, or feedback
+                about the site? Send us a message and we’ll be glad to hear from you.
+            </p>
+        </section>
+
+        <div class="contact-layout">
+            <section class="contact-info" aria-labelledby="contact-details-heading">
+                <p class="eyebrow">Contact details</p>
+                <h2 id="contact-details-heading">Reach Yogaverse</h2>
+                <p>
+                    Email us directly, or use the form to prepare a message in your
+                    email app. You can also keep exploring the site below.
+                </p>
+
+                <div class="contact-method">
+                    <h3>Email</h3>
+                    <a class="email-link" href="mailto:surabhishrivastav83@gmail.com">surabhishrivastav83@gmail.com</a>
+                    <p>Select the address to open a new email message.</p>
+                </div>
+
+                <div class="explore-links">
+                    <h3>Explore Yogaverse</h3>
+                    <div class="quick-links">
+                        <a href="about.html">About Yoga</a>
+                        <a href="poses.html">Yoga Poses</a>
+                        <a href="videos.html">Yoga Videos</a>
+                    </div>
+                </div>
+            </section>
+
+            <form class="contact-form" id="contact-form">
+                <p class="eyebrow">Send a message</p>
+                <h2>How can we help?</h2>
+                <p class="form-intro">
+                    Complete the fields below. Your default email app will open with
+                    your message ready to review and send.
+                </p>
+
+                <div class="field">
+                    <label for="name">Your name</label>
+                    <input id="name" name="name" type="text" autocomplete="name" placeholder="Enter your name" required>
+                </div>
+
+                <div class="field">
+                    <label for="email">Your email address</label>
+                    <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+                </div>
+
+                <div class="field">
+                    <label for="topic">What is your message about?</label>
+                    <select id="topic" name="topic" required>
+                        <option value="" selected disabled>Select a topic</option>
+                        <option>Yoga question</option>
+                        <option>Website feedback</option>
+                        <option>Content suggestion</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label for="message">Your message</label>
+                    <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
+                </div>
+
+                <button class="submit-button" type="submit">Prepare email</button>
+                <p class="form-note">
+                    This static webpage does not store or send form data. It opens
+                    your email app so you can review and send the message yourself.
+                </p>
+            </form>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>copyright &copy;All rights reserved.</p>
+        <p>Yogaverse | Learn yoga at your own pace</p>
+    </footer>
+
+    <script>
+        document.getElementById("contact-form").addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            const form = event.currentTarget;
+            const formData = new FormData(form);
+            const subject = `[Yogaverse] ${formData.get("topic")}`;
+            const body = [
+                `Name: ${formData.get("name")}`,
+                `Email: ${formData.get("email")}`,
+                "",
+                String(formData.get("message"))
+            ].join("\n");
+            const mailto = `mailto:surabhishrivastav83@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+            window.location.href = mailto;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#26372e">
+    <title>Yoga Videos | Yogaverse</title>
+    <style>
+        :root {
+            color-scheme: light;
+            font-family: "Segoe UI", Arial, sans-serif;
+            color: #26372e;
+            background: #f6f7f0;
+            font-synthesis: none;
+            text-rendering: optimizeLegibility;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            background: #f6f7f0;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .site-header {
+            width: 100%;
+            padding: 1rem max(1.25rem, calc((100% - 1200px) / 2));
+            background: #26372e;
+            box-shadow: 0 2px 18px rgb(38 55 46 / 14%);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .brand {
+            color: #f6f7f0;
+            font-size: 1.4rem;
+            font-weight: 750;
+            letter-spacing: 0.02em;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .brand span {
+            color: #d8b184;
+        }
+
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            gap: 0.25rem;
+        }
+
+        nav a {
+            padding: 0.65rem 0.85rem;
+            border-radius: 999px;
+            color: #e3e8e1;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: background-color 160ms ease, color 160ms ease;
+        }
+
+        nav a:hover,
+        nav a:focus-visible,
+        nav a[aria-current="page"] {
+            color: #fff;
+            background: #3a4d42;
+        }
+
+        nav a:focus-visible,
+        .watch-link:focus-visible {
+            outline: 3px solid #c38b57;
+            outline-offset: 3px;
+        }
+
+        main {
+            width: min(1200px, calc(100% - 3rem));
+            margin: 0 auto;
+        }
+
+        .intro {
+            padding: clamp(2.5rem, 7vw, 4.5rem) 0 2rem;
+            text-align: center;
+        }
+
+        .eyebrow {
+            margin: 0 0 0.75rem;
+            color: #6b815f;
+            font-size: 0.8rem;
+            font-weight: 750;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            margin: 0;
+            color: #294934;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(2.4rem, 5vw, 4rem);
+            font-weight: 500;
+        }
+
+        .intro-copy {
+            max-width: 690px;
+            margin: 1rem auto 0;
+            color: #536359;
+            font-size: 1.05rem;
+            line-height: 1.75;
+        }
+
+        .library-heading {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .library-heading h2 {
+            margin: 0;
+            color: #315d46;
+            font-size: 1.35rem;
+        }
+
+        .library-count {
+            margin: 0;
+            color: #68786c;
+            font-size: 0.9rem;
+        }
+
+        .table-wrap {
+            margin-bottom: 3rem;
+            overflow: hidden;
+            border: 1px solid #e2e8de;
+            border-radius: 1.2rem;
+            background: #fff;
+            box-shadow: 0 10px 30px rgb(38 55 46 / 5%);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        thead {
+            color: #eaf1e9;
+            background: #315d46;
+        }
+
+        th {
+            padding: 1rem 1.1rem;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+        }
+
+        td {
+            padding: 0.85rem 1.1rem;
+            border-top: 1px solid #edf0ea;
+            color: #536359;
+            font-size: 0.94rem;
+            vertical-align: middle;
+        }
+
+        tbody tr {
+            transition: background-color 140ms ease;
+        }
+
+        tbody tr:hover {
+            background: #f8faf6;
+        }
+
+        .video-cell {
+            display: flex;
+            min-width: 290px;
+            align-items: center;
+            gap: 0.9rem;
+        }
+
+        .thumbnail {
+            position: relative;
+            display: grid;
+            width: 120px;
+            min-width: 120px;
+            aspect-ratio: 16 / 9;
+            place-items: center;
+            overflow: hidden;
+            border-radius: 0.65rem;
+            background: linear-gradient(135deg, #d9e4d2, #c4d5bd 48%, #eedcc4);
+        }
+
+        .thumbnail::before {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(145deg, transparent 35%, rgb(38 63 50 / 25%));
+            content: "";
+        }
+
+        .thumbnail::after {
+            z-index: 1;
+            width: 0;
+            height: 0;
+            margin-left: 4px;
+            border-top: 9px solid transparent;
+            border-bottom: 9px solid transparent;
+            border-left: 14px solid #fff;
+            content: "";
+            filter: drop-shadow(0 1px 2px rgb(0 0 0 / 25%));
+        }
+
+        tbody tr:nth-child(4n + 2) .thumbnail {
+            background: linear-gradient(135deg, #efd9c5, #e4c3a5 48%, #d8e3d2);
+        }
+
+        tbody tr:nth-child(4n + 3) .thumbnail {
+            background: linear-gradient(135deg, #d9e7e1, #bfd8cb 48%, #eee2cf);
+        }
+
+        tbody tr:nth-child(4n) .thumbnail {
+            background: linear-gradient(135deg, #e7dfcf, #d7cbb3 48%, #d2dfd2);
+        }
+
+        .video-title {
+            display: block;
+            margin-bottom: 0.25rem;
+            color: #294934;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .video-subtitle {
+            color: #718075;
+            font-size: 0.82rem;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 0.38rem 0.65rem;
+            border-radius: 999px;
+            color: #48604d;
+            background: #edf2eb;
+            font-size: 0.8rem;
+            white-space: nowrap;
+        }
+
+        .watch-link {
+            display: inline-flex;
+            min-height: 40px;
+            align-items: center;
+            justify-content: center;
+            padding: 0.55rem 0.85rem;
+            border-radius: 999px;
+            color: #fff;
+            background: #315d46;
+            font-size: 0.84rem;
+            font-weight: 650;
+            text-decoration: none;
+            white-space: nowrap;
+            transition: background-color 160ms ease;
+        }
+
+        .watch-link:hover {
+            background: #244b36;
+        }
+
+        .note {
+            margin: -1.5rem 0 2.5rem;
+            color: #718075;
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        .site-footer {
+            padding: 1.5rem;
+            color: #eaf1e9;
+            background: #263f32;
+            text-align: center;
+        }
+
+        .site-footer p {
+            margin: 0;
+        }
+
+        @media (max-width: 900px) {
+            .header-inner {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            nav {
+                justify-content: center;
+            }
+
+            .table-wrap {
+                overflow: visible;
+                border: 0;
+                background: transparent;
+                box-shadow: none;
+            }
+
+            table,
+            tbody {
+                display: block;
+                width: 100%;
+            }
+
+            thead {
+                position: absolute;
+                width: 1px;
+                height: 1px;
+                overflow: hidden;
+                clip: rect(0, 0, 0, 0);
+                white-space: nowrap;
+                clip-path: inset(50%);
+            }
+
+            tbody {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 1rem;
+            }
+
+            tbody tr {
+                display: flex;
+                min-width: 0;
+                flex-direction: column;
+                padding: 0.9rem;
+                border: 1px solid #e2e8de;
+                border-radius: 1rem;
+                background: #fff;
+                box-shadow: 0 8px 22px rgb(38 55 46 / 5%);
+            }
+
+            td {
+                display: block;
+                padding: 0.45rem 0;
+                border: 0;
+            }
+
+            .video-cell {
+                min-width: 0;
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 0.7rem;
+            }
+
+            .thumbnail {
+                width: 100%;
+                min-width: 0;
+            }
+
+            .watch-link {
+                width: 100%;
+                margin-top: auto;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .site-header {
+                padding: 1rem 0.75rem;
+            }
+
+            nav {
+                gap: 0;
+            }
+
+            nav a {
+                padding: 0.55rem 0.65rem;
+                font-size: 0.88rem;
+            }
+
+            main {
+                width: calc(100% - 1.5rem);
+            }
+
+            .intro {
+                padding-top: 2.5rem;
+            }
+
+            .library-heading {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 0.35rem;
+            }
+
+            tbody {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+            }
+
+            tbody tr {
+                display: grid;
+                grid-template-columns: minmax(0, 1fr) auto;
+                align-items: center;
+                column-gap: 0.8rem;
+                padding: 0.85rem;
+            }
+
+            td:first-child {
+                grid-column: 1 / -1;
+            }
+
+            td:nth-child(2),
+            td:nth-child(3) {
+                padding-bottom: 0.1rem;
+            }
+
+            td:nth-child(3) {
+                justify-self: end;
+            }
+
+            td:last-child {
+                grid-column: 1 / -1;
+            }
+
+            .video-cell {
+                display: grid;
+                grid-template-columns: 112px minmax(0, 1fr);
+                align-items: center;
+                gap: 0.75rem;
+            }
+
+            .thumbnail {
+                width: 112px;
+            }
+
+            .video-title {
+                font-size: 0.95rem;
+            }
+
+            .video-subtitle {
+                font-size: 0.78rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+        <link rel="stylesheet" href="nature.css">
+        <script src="nature.js" defer></script>
+    </head>
+<body>
+    <header class="site-header">
+        <div class="header-inner">
+            <a class="brand" href="second.html" aria-label="Yogaverse home">yoga<span>verse</span></a>
+            <nav aria-label="Main navigation">
+                <a href="second.html">Home</a>
+                <a href="about.html">About Yoga</a>
+                <a href="poses.html">Yoga Poses</a>
+                <a href="videos.html" aria-current="page">Yoga Videos</a>
+                <a href="contact.html">Contact Us</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="intro" aria-labelledby="page-heading">
+            <p class="eyebrow">A practice for every day</p>
+            <h1 id="page-heading">Find your flow</h1>
+            <p class="intro-copy">
+                Explore women-led yoga classes and guided practices, from gentle
+                first steps to energizing flows. Choose a session that suits your
+                mood and experience.
+            </p>
+        </section>
+
+        <section aria-labelledby="library-heading">
+            <div class="library-heading">
+                <h2 id="library-heading">Yoga video library</h2>
+                <p class="library-count">16 practices to explore</p>
+            </div>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">Video suggestion</th>
+                            <th scope="col">Practice</th>
+                            <th scope="col">Level</th>
+                            <th scope="col">Explore</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="video-cell">
+                                    <span class="thumbnail" aria-hidden="true"></span>
+                                    <span><span class="video-title">Beginner Full-Body Yoga</span><span class="video-subtitle">A welcoming first class</span></span>
+                                </div>
+                            </td>
+                            <td>Full body</td>
+                            <td><span class="tag">Beginner</span></td>
+                            <td><a class="watch-link" href="https://www.youtube.com/results?search_query=women+yoga+beginner+full+body+class" target="_blank" rel="noopener noreferrer">Find videos</a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="video-cell">
+                                    <span class="thumbnail" aria-hidden="true"></span>
+                                    <span><span class="video-title">Gentle Morning Stretch</span><span class="video-subtitle">Wake up slowly and move</span></span>
+                                </div>
+                            </td>
+                            <td>Morning flow</td>
+                            <td><span class="tag">All levels</span></td>
+                            <td><a class="watch-link" href="https://www.youtube.com/results?search_query=women+gentle+morning+yoga+stretch+class" target="_blank" rel="noopener noreferrer">Find videos</a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="video-cell">
+                                    <span class="thumbnail" aria-hidden="true"></span>
+                                    <span><span class="video-title">Slow &amp; Gentle Yoga</span><span class="video-subtitle">An unhurried, calming session</span></span>
+                                </div>
+                            </td>
+                            <td>Gentle flow</td>
+                            <td><span class="tag">Beginner</span></td>
+                            <td><a class="watch-link" href="https://www.youtube.com/results?search_query=women+gentle+slow+yoga+beginner+class" target="_blank" rel="noopener noreferrer">Find videos</a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="video-cell">
+                                    <span class="thumbnail" aria-hidden="true"></span>
+                                    <span><span class="video-title">Yoga for Flexibility</span><span class="video-subtitle">Explore comfortable stretches</span></span>
+                                </div>
+                            </td>
+                            <td>Stretch &amp; mobility</td>
+                            <td><span class="tag">All levels</span></td>
+                            <td><a class="watch-link" href="https://www.youtube.com/results?search_query=women+yoga+for+flexibility+guided+class" target="_blank" rel="noopener noreferrer">Find videos</a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="video-cell">
+                                    <span class="thumbnail" aria-hidden="true"></span>
+                                    <span><span class="video-title">Energizing Power Yoga</span><span class="video-subtitle">A stronger, flowing practice</span></span>
+                                </div>
+                            </td>
+                            <td>Power flow</td>
+                            <td><span class="tag">Intermediate</span></td>
+                            <td><a class="watch-link" href="https://www.youtube.com/results?search_query=women+instructor+power+yoga+flow+class" target="_blank" rel="noopener noreferrer">Find videos</a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="video-cell">
+                                    <span class="thumbnail" aria-hidden="true"></span>
+                                    <span><span class="video-title">Chair Yoga at Home</span><span class="video-subtitle">Accessible seated movement</span></span>
+                                </div>
+                            </td>
+                            <td>Chair yoga</td>
+                            <td><span class="tag">Beginner</span></td>
+                            <td><a class="watch-link" href="https://www.youtube.com/results?search_query=women+chair+yoga+beginner+class+at+home" target="_blank" rel="noopener noreferrer">Find videos</a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="video-cell">
+                                    <span class="thumbnail" aria-hidden="true"></span>
+                                    <span><span class="video-title">Restorative Evening Yoga</span><span class="video-subtitle">Settle into a restful pace</span></span>
+                                </div>
+                            </td>
+                            <td>Restorative</td>
+                            <td><span class="tag">All levels</span></td>
+                            <td><a class="watch-link" href="https://www.youtube.com/results?search_query=women+restorative+yoga+evening+class" target="_blank" rel="noopener noreferrer">Find videos</a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="video-cell">
+                                    <span class="thumbnail" aria-hidden="true"></span>
+                                    <span><span class="video-title">10-Minute Desk Break</span><span class="video-subtitle">A short reset between tasks</span></span>
+                                </div>
+                            </td>
+                            <td>Quick stretch</td>
+                            <td><span class="tag">Beginner</span></td>
+                            <td><a class="watch-link" href="https://www.youtube.com/results?search_query=women+10+minute+desk+break+yoga+stretch" target="_blank" rel="noopener noreferrer">Find videos</a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="video-cell">
+                                    <span class="thumbnail" aria-hidden="true"></span>
+                                    <span><span class="video-title">20-Minute Vinyasa Flow</span><span class="video-subtitle">Link breath with movement</span></span>
+                                </div>
+                            </td>
+                            <td>Vinyasa</td>
+                            <td><span class="tag">Intermediate</span></td>
+                            <td><a class="watch-link" href="https://www.youtube.com/results?search_query=women+20+minute+vinyasa+yoga+flow" target="_blank" rel="noopener noreferrer">Find videos</a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="video-cell">
+                                    <span class="thumbnail" aria-hidden="true"></span>
+                                    <span><span class="video-title">Yoga for Back Comfort</span><span class="video-subtitle">Gentle movement and awareness</span></span>
+                                </div>
+                            </td>
+                            <td>Gentle mobility</td>
+                            <td><span class="tag">Beginner</span></td>
+                            <td><a class="watch-link" href="https://www.youtube.com/results?search_query=women+gentle+yoga+for+back+comfort+beginner" target="_blank" rel="noopener noreferrer">Find videos</a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="video-cell">
+                                    <span class="thumbnail" aria-hidden="true"></span>
+                                    <span><span class="video-title">Stress-Relief Yoga</span><span class="video-subtitle">Slow movement and mindful pauses</span></span>
+                                </div>
+                            </td>
+                            <td>Relaxation</td>
+                            <td><span class="tag">All levels</span></td>
+                            <td><a class="watch-link" href="https://www.youtube.com/results?search_query=women+stress+relief+gentle+yoga+class" target="_blank" rel="noopener noreferrer">Find videos</a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="video-cell">
+                                    <span class="thumbnail" aria-hidden="true"></span>
+                                    <span><span class="video-title">Balance &amp; Stability Flow</span><span class="video-subtitle">Practice steadiness at your pace</span></span>
+                                </div>
+                            </td>
+                            <td>Balance</td>
+                            <td><span class="tag">All levels</span></td>
+                            <td><a class="watch-link" href="https://www.youtube.com/results?search_query=women+yoga+balance+stability+flow+class" target="_blank" rel="noopener noreferrer">Find videos</a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="video-cell">
+                                    <span class="thumbnail" aria-hidden="true"></span>
+                                    <span><span class="video-title">Yoga for Core Strength</span><span class="video-subtitle">Build strength with control</span></span>
+                                </div>
+                            </td>
+                            <td>Strength</td>
+                            <td><span class="tag">Intermediate</span></td>
+                            <td><a class="watch-link" href="https://www.youtube.com/results?search_query=women+yoga+core+strength+guided+class" target="_blank" rel="noopener noreferrer">Find videos</a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="video-cell">
+                                    <span class="thumbnail" aria-hidden="true"></span>
+                                    <span><span class="video-title">Bedtime Wind-Down Yoga</span><span class="video-subtitle">Easy shapes for the end of day</span></span>
+                                </div>
+                            </td>
+                            <td>Bedtime</td>
+                            <td><span class="tag">Beginner</span></td>
+                            <td><a class="watch-link" href="https://www.youtube.com/results?search_query=women+bedtime+wind+down+yoga+class" target="_blank" rel="noopener noreferrer">Find videos</a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="video-cell">
+                                    <span class="thumbnail" aria-hidden="true"></span>
+                                    <span><span class="video-title">Breathing &amp; Meditation</span><span class="video-subtitle">A quiet pause to reset</span></span>
+                                </div>
+                            </td>
+                            <td>Breathwork</td>
+                            <td><span class="tag">All levels</span></td>
+                            <td><a class="watch-link" href="https://www.youtube.com/results?search_query=women+guided+breathing+meditation+for+beginners" target="_blank" rel="noopener noreferrer">Find videos</a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="video-cell">
+                                    <span class="thumbnail" aria-hidden="true"></span>
+                                    <span><span class="video-title">Yoga for Healthy Posture</span><span class="video-subtitle">Gentle awareness from head to toe</span></span>
+                                </div>
+                            </td>
+                            <td>Posture</td>
+                            <td><span class="tag">Beginner</span></td>
+                            <td><a class="watch-link" href="https://www.youtube.com/results?search_query=women+yoga+for+posture+beginner+class" target="_blank" rel="noopener noreferrer">Find videos</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="note">
+                These are YouTube search suggestions, not embedded or individually verified videos.
+                Results can change over time; choose a qualified instructor and stop if a movement
+                causes pain.
+            </p>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>copyright &copy;All rights reserved.</p>
+        <p>Yogaverse | Learn yoga at your own pace</p>
+    </footer>
+</body>
+</html>

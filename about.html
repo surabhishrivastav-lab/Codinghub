@@ -1,0 +1,242 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Yoga | Yogaverse</title>
+    <style>
+        :root {
+            color-scheme: light;
+            font-family: "Segoe UI", Arial, sans-serif;
+            color: #26372e;
+            background: #f5f8f3;
+            font-synthesis: none;
+            text-rendering: optimizeLegibility;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            min-width: 320px;
+            min-height: 100vh;
+            margin: 0;
+            background: #f5f8f3;
+        }
+
+        header {
+            width: 100%;
+            padding: 2.5rem 1.25rem 1.5rem;
+            color: #fff;
+            text-align: center;
+            background: linear-gradient(135deg, #315d46, #6d9270);
+        }
+
+        header h1 {
+            margin: 0 0 1.5rem;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            letter-spacing: 0.02em;
+        }
+
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        nav a {
+            padding: 0.65rem 1rem;
+            border-radius: 999px;
+            color: #fff;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: background-color 160ms ease;
+        }
+
+        nav a:hover,
+        nav a:focus-visible {
+            background: rgba(255, 255, 255, 0.18);
+        }
+
+        nav a:focus-visible {
+            outline: 2px solid #fff;
+            outline-offset: 2px;
+        }
+
+        main {
+            display: grid;
+            gap: 1.5rem;
+            width: min(1100px, calc(100% - 3rem));
+            margin: 2.5rem auto;
+        }
+
+        main section {
+            padding: clamp(1.25rem, 4vw, 2.5rem);
+            border: 1px solid #e4ebe2;
+            border-radius: 1.25rem;
+            background: #fff;
+            box-shadow: 0 10px 30px rgb(38 55 46 / 6%);
+        }
+
+        main section:first-child {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            align-items: center;
+            gap: 2rem;
+        }
+
+        main section h2 {
+            margin: 0 0 1rem;
+            color: #315d46;
+            font-size: clamp(1.4rem, 3vw, 2rem);
+        }
+
+        main section p,
+        main section li {
+            color: #536359;
+            font-size: 1.05rem;
+            line-height: 1.75;
+        }
+
+        main section p {
+            margin: 0;
+        }
+
+        main section ul {
+            margin: 0;
+            padding-left: 1.4rem;
+        }
+
+        main section img {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-height: 400px;
+            border-radius: 1rem;
+            object-fit: cover;
+        }
+
+        .video-frame {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            border-radius: 1rem;
+            background: #e4ebe2;
+        }
+
+        .video-frame iframe {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        footer {
+            padding: 1.5rem;
+            color: #eaf1e9;
+            text-align: center;
+            background: #263f32;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        @media (max-width: 640px) {
+            header {
+                padding: 2rem 1rem 1.25rem;
+            }
+
+            nav {
+                gap: 0.25rem;
+            }
+
+            nav a {
+                padding: 0.55rem 0.7rem;
+                font-size: 0.95rem;
+            }
+
+            main {
+                gap: 1rem;
+                width: calc(100% - 1.5rem);
+                margin: 1.25rem auto;
+            }
+
+            main section:first-child {
+                grid-template-columns: 1fr;
+                gap: 1.25rem;
+            }
+        }
+    </style>
+        <link rel="stylesheet" href="nature.css">
+        <script src="nature.js" defer></script>
+    </head>
+<body>
+    <header>
+        <h1>About Yoga</h1>
+        <nav>
+            <a href="second.html">Home</a>
+            <a href="about.html">About Yoga</a>
+            <a href="poses.html">Yoga Poses</a>
+            <a href="videos.html">Yoga Videos</a>
+            <a href="contact.html">Contact Us</a>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>What is Yoga?</h2>
+            <p>
+                Yoga is a practice with roots in South Asia. It can bring together
+                physical postures, breathing exercises, and meditation. People
+                practice in different ways and for different reasons.
+            </p>
+            <img
+                src="https://media.gettyimages.com/id/1315856341/photo/young-woman-meditating-outdoors-at-park.jpg?s=2048x2048&w=gi&k=20&c=6KzmIPiEAIt3uzqP8uLMe93-nAa9yva-wdoq9oyWRGE="
+                alt="Person practicing a yoga pose"
+                width="500"
+            >
+        </section>
+
+        <section>
+            <h2>What Does Yoga Include?</h2>
+            <ul>
+                <li>Poses, also called asanas</li>
+                <li>Breathing exercises</li>
+                <li>Meditation and focus</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Why Do People Practice Yoga?</h2>
+            <p>
+                Regular practice may help develop flexibility, balance, and
+                body awareness. Choose a level and pace that feel comfortable
+                for you.
+            </p>
+        </section>
+
+        <section>
+            <h2>Learn More</h2>
+            <div class="video-frame">
+                <iframe
+                    src="https://www.youtube.com/embed/iGZim9_ku-Q?si=d2vJd03iRkuqXbNn"
+                    title="Learn more about yoga"
+                    loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen
+                ></iframe>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>copyright &copy; All rights reserved</p>
+        <p>Yogaverse | Learn Yoga at Your Own Pace</p>
+    </footer>
+</body>
+</html>

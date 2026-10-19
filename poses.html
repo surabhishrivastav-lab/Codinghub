@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f6f7f0">
+    <title>Yoga Poses | Yogaverse</title>
+    <style>
+        :root {
+            color-scheme: light;
+            font-family: "Segoe UI", Arial, sans-serif;
+            color: #26372e;
+            background: #f6f7f0;
+            font-synthesis: none;
+            text-rendering: optimizeLegibility;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            background: #f6f7f0;
+        }
+
+        .site-header {
+            width: 100%;
+            padding: 1rem max(1.25rem, calc((100% - 1200px) / 2));
+            background: #26372e;
+            box-shadow: 0 2px 18px rgb(38 55 46 / 14%);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .brand {
+            color: #f6f7f0;
+            font-size: 1.4rem;
+            font-weight: 750;
+            letter-spacing: 0.02em;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .brand span {
+            color: #d8b184;
+        }
+
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            gap: 0.25rem;
+        }
+
+        nav a {
+            padding: 0.65rem 0.85rem;
+            border-radius: 999px;
+            color: #e3e8e1;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: background-color 160ms ease, color 160ms ease;
+        }
+
+        nav a:hover,
+        nav a:focus-visible,
+        nav a[aria-current="page"] {
+            color: #fff;
+            background: #3a4d42;
+        }
+
+        nav a:focus-visible,
+        .getty-link:focus-visible {
+            outline: 3px solid #c38b57;
+            outline-offset: 3px;
+        }
+
+        main {
+            width: min(1200px, calc(100% - 3rem));
+            margin: 0 auto;
+        }
+
+        .intro {
+            padding: clamp(2.5rem, 7vw, 5rem) 0 2rem;
+            text-align: center;
+        }
+
+        .eyebrow {
+            margin: 0 0 0.75rem;
+            color: #6b815f;
+            font-size: 0.8rem;
+            font-weight: 750;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            margin: 0;
+            color: #294934;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(2.4rem, 5vw, 4rem);
+            font-weight: 500;
+        }
+
+        .intro-copy {
+            max-width: 650px;
+            margin: 1rem auto 0;
+            color: #536359;
+            font-size: 1.05rem;
+            line-height: 1.75;
+        }
+
+        .image-note {
+            max-width: 850px;
+            margin: 0 auto 2rem;
+            padding: 1rem 1.2rem;
+            border: 1px solid #e4d7c0;
+            border-radius: 0.9rem;
+            color: #685940;
+            background: #fffaf1;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .pose-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1.25rem;
+            padding-bottom: 3rem;
+        }
+
+        .pose-card {
+            display: flex;
+            min-width: 0;
+            flex-direction: column;
+            overflow: hidden;
+            border: 1px solid #e4e9df;
+            border-radius: 1.2rem;
+            background: #fff;
+            box-shadow: 0 10px 30px rgb(38 55 46 / 5%);
+            transition: transform 180ms ease, box-shadow 180ms ease;
+        }
+
+        .pose-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 34px rgb(38 55 46 / 10%);
+        }
+
+        .pose-image {
+            display: block;
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            background: #e4ebe2;
+            object-fit: cover;
+        }
+
+        .pose-content {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 1.25rem;
+        }
+
+        .pose-level {
+            margin: 0 0 0.5rem;
+            color: #6b815f;
+            font-size: 0.75rem;
+            font-weight: 750;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .pose-card h2 {
+            margin: 0 0 0.6rem;
+            color: #315d46;
+            font-size: 1.25rem;
+        }
+
+        .pose-card p:not(.pose-level) {
+            margin: 0 0 1rem;
+            color: #536359;
+            font-size: 0.95rem;
+            line-height: 1.65;
+        }
+
+        .getty-link {
+            display: inline-flex;
+            min-height: 42px;
+            align-items: center;
+            justify-content: center;
+            margin-top: auto;
+            padding: 0.65rem 1rem;
+            border-radius: 999px;
+            color: #fff;
+            background: #315d46;
+            font-size: 0.9rem;
+            font-weight: 650;
+            text-decoration: none;
+            transition: background-color 160ms ease;
+        }
+
+        .getty-link:hover {
+            background: #244b36;
+        }
+
+        .site-footer {
+            padding: 1.5rem;
+            color: #eaf1e9;
+            background: #263f32;
+            text-align: center;
+        }
+
+        .site-footer p {
+            margin: 0;
+        }
+
+        @media (max-width: 900px) {
+            .pose-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .header-inner {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            nav {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .site-header {
+                padding: 1rem 0.75rem;
+            }
+
+            nav {
+                gap: 0;
+            }
+
+            nav a {
+                padding: 0.55rem 0.65rem;
+                font-size: 0.88rem;
+            }
+
+            main {
+                width: calc(100% - 1.5rem);
+            }
+
+            .intro {
+                padding-top: 2.5rem;
+            }
+
+            .pose-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+        <link rel="stylesheet" href="nature.css">
+        <script src="nature.js" defer></script>
+    </head>
+<body>
+    <header class="site-header">
+        <div class="header-inner">
+            <a class="brand" href="second.html" aria-label="Yogaverse home">yoga<span>verse</span></a>
+            <nav aria-label="Main navigation">
+                <a href="second.html">Home</a>
+                <a href="about.html">About Yoga</a>
+                <a href="poses.html" aria-current="page">Yoga Poses</a>
+                <a href="videos.html">Yoga Videos</a>
+                <a href="contact.html">Contact Us</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="intro" aria-labelledby="page-heading">
+            <p class="eyebrow">Move at your own pace</p>
+            <h1 id="page-heading">Explore yoga poses</h1>
+            <p class="intro-copy">
+                Discover a few well-loved poses, what they involve, and browse Getty
+                Images for photographs that can inspire your practice.
+            </p>
+        </section>
+         <section class="pose-grid" aria-label="Yoga pose inspiration">
+            <article class="pose-card">
+                <img
+                    class="pose-image"
+                    src="https://images.unsplash.com/photo-1588286840104-8957b019727f?auto=format&amp;fit=crop&amp;w=900&amp;q=80"
+                    alt="A group following an instructor in a standing yoga pose"
+                    loading="lazy"
+                >
+                <div class="pose-content">
+                    <p class="pose-level">Standing pose</p>
+                    <h2>Warrior II</h2>
+                    <p>
+                        A steady, wide-legged stance that builds focus and strength
+                        through the legs and arms.
+                    </p>
+                    <a
+                        class="getty-link"
+                        href="https://www.gettyimages.com/photos/warrior-ii-yoga-pose"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Browse Warrior II yoga pose photos on Getty Images"
+                    >Browse on Getty Images</a>
+                </div>
+            </article>
+
+            <article class="pose-card">
+                <img
+                    class="pose-image"
+                    src="https://images.unsplash.com/photo-1599447421416-3414500d18a5?auto=format&amp;fit=crop&amp;w=900&amp;q=80"
+                    alt="A person practicing a yoga balance pose"
+                    loading="lazy"
+                >
+                <div class="pose-content">
+                    <p class="pose-level">Balance pose</p>
+                    <h2>Tree Pose</h2>
+                    <p>
+                        Stand tall on one foot and rest the other foot against the
+                        supporting leg, choosing a comfortable height.
+                    </p>
+                    <a
+                        class="getty-link"
+                        href="https://www.gettyimages.com/photos/tree-pose-yoga"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Browse Tree Pose yoga photos on Getty Images"
+                    >Browse on Getty Images</a>
+                </div>
+            </article>
+
+            <article class="pose-card">
+                <img
+                    class="pose-image"
+                    src="https://images.unsplash.com/photo-1593811167562-9cef47bfc4d7?auto=format&amp;fit=crop&amp;w=900&amp;q=80"
+                    alt="A person moving through a yoga sequence"
+                    loading="lazy"
+                >
+                <div class="pose-content">
+                    <p class="pose-level">Resting pose</p>
+                    <h2>Child’s Pose</h2>
+                    <p>
+                        A gentle resting position. Kneel, fold forward, and support
+                        your head or hips with a cushion if helpful.
+                    </p>
+                    <a
+                        class="getty-link"
+                        href="https://www.gettyimages.com/photos/childs-pose-yoga"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Browse Child's Pose yoga photos on Getty Images"
+                    >Browse on Getty Images</a>
+                </div>
+            </article>
+
+            <article class="pose-card">
+                <img
+                    class="pose-image"
+                    src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&amp;fit=crop&amp;w=900&amp;q=80"
+                    alt="A person practicing yoga on a mat"
+                    loading="lazy"
+                >
+                <div class="pose-content">
+                    <p class="pose-level">Forward fold</p>
+                    <h2>Downward-Facing Dog</h2>
+                    <p>
+                        Press hands and feet into the mat and lift the hips. Keep
+                        the knees bent if that feels more comfortable.
+                    </p>
+                    <a
+                        class="getty-link"
+                        href="https://www.gettyimages.com/photos/downward-facing-dog-yoga"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Browse Downward-Facing Dog yoga photos on Getty Images"
+                    >Browse on Getty Images</a>
+                </div>
+            </article>
+
+            <article class="pose-card">
+                <img
+                    class="pose-image"
+                    src="https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?auto=format&amp;fit=crop&amp;w=900&amp;q=80"
+                    alt="A person practicing a gentle yoga stretch"
+                    loading="lazy"
+                >
+                <div class="pose-content">
+                    <p class="pose-level">Gentle backbend</p>
+                    <h2>Cobra Pose</h2>
+                    <p>
+                        Lie on your front and gently lift your chest, keeping the
+                        movement small and comfortable for your back.
+                    </p>
+                    <a
+                        class="getty-link"
+                        href="https://www.gettyimages.com/photos/cobra-pose-yoga"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Browse Cobra Pose yoga photos on Getty Images"
+                    >Browse on Getty Images</a>
+                </div>
+            </article>
+
+            <article class="pose-card">
+                <img
+                    class="pose-image"
+                    src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&amp;fit=crop&amp;w=900&amp;q=80"
+                    alt="A person sitting in a quiet meditation pose"
+                    loading="lazy"
+                >
+                <div class="pose-content">
+                    <p class="pose-level">Seated pose</p>
+                    <h2>Easy Seated Pose</h2>
+                    <p>
+                        Sit cross-legged with a relaxed, upright spine. Sit on a
+                        folded blanket for extra comfort.
+                    </p>
+                    <a
+                        class="getty-link"
+                        href="https://www.gettyimages.com/photos/easy-seated-yoga-pose"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Browse Easy Seated Pose yoga photos on Getty Images"
+                    >Browse on Getty Images</a>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>copyright &copy; All rights reserved</p>
+        <p>Yogaverse | Learn yoga at your own pace</p>
+    </footer>
+</body>
+</html>
